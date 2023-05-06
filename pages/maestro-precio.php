@@ -55,7 +55,7 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
 
         <div class="table-container mt-2">
             <div class="row g-3 justify-content-center">
-                <h3 class="titulo">Baquedano</h3>
+                <h3 id="titulo" class="titulo">Local</h3>
                 <table class="styled-table table table-hover Table tabla" id="tabla-productos-fijos">
                     <thead>
                         <tr>
@@ -66,20 +66,9 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
                             <td><strong>Modificar</strong></td>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <?php
-                            foreach ($precios as $precio) {
-                                echo "<tr>";
-                                echo "<td>" . $precio->getCodigobarra()  . "</td>";
-                                echo "<td>" . $precio->getDescripcion() . "</td>";
-                                echo "<td>" . $precio->getPcosto() . "</td>";
-                                echo "<td>" . $precio->getPfijo() . "</td>";
-                                echo "<td><a href='' class='modificar_precio'  cod='" . $precio[$i]->getCodigobarra() . "' des='" . $precio[$i]->getDescripcion() . "' pfijo='" . $precio[$i]->getPcosto() . " ' pcost='" . $precio[$i]->getPfijo() . "'>Editar</a></td>";
-                                echo "</tr>";
-                            }
-                            ?>
-                        </tr>
+                    <tbody id="tbody_productos">
+                                
+                
                     </tbody>
                 </table>
 
@@ -131,19 +120,7 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
                         </thead>
                         <tbody>
                             <tr>
-                                <?php
-                                $precioOferta = $maestroProductoController->getOfertaUnitaria();
-                                for ($i = 0; $i < count($precioOferta); $i++) {
-                                    echo "<tr>";
-                                    echo "<td>" . $precioOferta[$i]->getOfertap()  . "</td>";
-                                    echo "<td>" . $precioOferta[$i]->getCantidad() . "</td>";
-                                    echo "<td>" . $precioOferta[$i]->getDesde() . "</td>";
-                                    echo "<td>" . $precioOferta[$i]->getHasta() . "</td>";
-                                    echo "<td>" . $precioOferta[$i]->getDiasRestantes() . "</td>";
-                                    echo "<td><a href='' class='modificar_precioOferta' codigo='" . $precioOferta[$i]->getCodigobarra() . "'  pOf='" . $precioOferta[$i]->getOfertap() . "' can='" . $precioOferta[$i]->getCantidad() . "'  des='" . $precioOferta[$i]->getDesde() . "' has='" . $precioOferta[$i]->getHasta() . " 'dres='" . $precioOferta[$i]->getDiasRestantes() . " '>Editar</a></td>";
-                                    echo "</tr>";
-                                }
-                                ?>
+                                
                             </tr>
                         </tbody>
                 </table>
@@ -202,6 +179,7 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
     <script src="../assets/js/btn-buscar.js"></script>
     <script src="../assets/js/buscarPrecio.js"></script>
     <script src="../assets/js/functions.js"></script>
+    <script src="../assets/js/function_buscar_prd.js"></script>
     <script src="../assets/js/limpiar.js"></script>
     <script src="../assets/js/codigoAutomatico.js"></script>
 </body>

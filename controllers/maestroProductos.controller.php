@@ -35,11 +35,26 @@ class MaestroProductosController
         WHERE a.codigobarra=b.codigo AND a.codigobarra='$codigobarra' AND b.local='$local'";
         $st = $this->connectDB2->query($sql);
         while ($rs = mysqli_fetch_array($st)) {
-            $precioFijo[] = new MaestroProductosFijo($rs['local'], $rs['CODIGO'], $rs['DESCRIPCION'],  $rs['PRECIO_COSTO'],  $rs['PRECIO_FIJO'], null, null, null, null, null, null, NULL);;
+            $precioFijo[] = ["local" => $rs['LOCAL'], "codigo" => $rs['CODIGO'], "descripcion" => $rs['DESCRIPCION'], "precio_costo" => $rs['PRECIO_COSTO'], "precio_fijo" => $rs['PRECIO_FIJO']];
         }
         $this->connectDB2->disconnect();
         return $precioFijo;
     }
+
+    // public function buscarPrecios($local, $codigobarra)
+    // {
+    //     $precioFijo = array();
+    //     $this->connectDB2->connect();
+    //     $sql = "SELECT  a.codigobarra AS CODIGO, a.descripcion AS DESCRIPCION,a.pcosto AS PRECIO_COSTO, b.preciopuntoventa AS PRECIO_FIJO,b.local AS LOCAL
+    //     FROM cugat_gestion00.r_maestroproductos_fijo_00 AS a, cugat_gestion00.r_maestroproductos_precios_00 AS b
+    //     WHERE a.codigobarra=b.codigo AND a.codigobarra='$codigobarra' AND b.local='$local'";
+    //     $st = $this->connectDB2->query($sql);
+    //     while ($rs = mysqli_fetch_array($st)) {
+    //         $precioFijo[] = new MaestroProductosFijo($rs['local'], $rs['CODIGO'], $rs['DESCRIPCION'],  $rs['PRECIO_COSTO'],  $rs['PRECIO_FIJO'], null, null, null, null, null, null, NULL);;
+    //     }
+    //     $this->connectDB2->disconnect();
+    //     return $precioFijo;
+    // }
 
 
     public function getOfertaUnitaria($local, $codigobarra)
