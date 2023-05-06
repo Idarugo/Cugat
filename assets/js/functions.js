@@ -1,14 +1,5 @@
 /* Precio */
 
-$(".modificar_precio").click(function (e) {
-  e.preventDefault();
-  let codigobarra = $(this).attr("cod");
-  let pfijo = $(this).attr("pcost");
-  $("#id_c").val(codigobarra);
-  $("#pfijo").val(pfijo);
-  $("#modal_modificar").modal("show");
-});
-
 $(".modificar_precioOferta").click(function (e) {
   e.preventDefault();
   let codigob = $(this).attr("codigo");

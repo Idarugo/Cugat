@@ -67,8 +67,8 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
                         </tr>
                     </thead>
                     <tbody id="tbody_productos">
-                                
-                
+
+
                     </tbody>
                 </table>
 
@@ -119,9 +119,19 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                
-                            </tr>
+                            <?php
+                            $precioOferta = $maestroProductoController->getOfertaUnitaria(00,5609404432964);
+                            for ($i = 0; $i < count($precioOferta); $i++) {
+                                echo "<tr>";
+                                echo "<td>" . $precioOferta[$i]->getOfertap()  . "</td>";
+                                echo "<td>" . $precioOferta[$i]->getCantidad() . "</td>";
+                                echo "<td>" . $precioOferta[$i]->getDesde() . "</td>";
+                                echo "<td>" . $precioOferta[$i]->getHasta() . "</td>";
+                                echo "<td>" . $precioOferta[$i]->getDiasRestantes() . "</td>";
+                                echo "<td><a href='' class='modificar_precioOferta' codigo='" . $precioOferta[$i]->getCodigobarra() . "'  pOf='" . $precioOferta[$i]->getOfertap() . "' can='" . $precioOferta[$i]->getCantidad() . "'  des='" . $precioOferta[$i]->getDesde() . "' has='" . $precioOferta[$i]->getHasta() . " 'dres='" . $precioOferta[$i]->getDiasRestantes() . " '>Editar</a></td>";
+                                echo "</tr>";
+                            }
+                            ?>
                         </tbody>
                 </table>
 
@@ -178,8 +188,8 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
     ?>
     <script src="../assets/js/btn-buscar.js"></script>
     <script src="../assets/js/buscarPrecio.js"></script>
-    <script src="../assets/js/functions.js"></script>
     <script src="../assets/js/function_buscar_prd.js"></script>
+    <script src="../assets/js/functions.js"></script>
     <script src="../assets/js/limpiar.js"></script>
     <script src="../assets/js/codigoAutomatico.js"></script>
 </body>

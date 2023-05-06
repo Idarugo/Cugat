@@ -48,6 +48,7 @@ btn.addEventListener("click", function () {
         editar.href = "#";
         editar.textContent = "Editar";
         editar.className = "modificar_precio";
+        editar.addEventListener("click", modalShow)
         td_cod.textContent = data[0].codigo;
         td_des.textContent = data[0].descripcion;
         td_p_costo.textContent = data[0].precio_costo;
@@ -59,3 +60,12 @@ btn.addEventListener("click", function () {
     })
     .catch((error) => console.error(error));
 });
+
+
+let modalShow = (e) =>{
+  let codigobarra = e.target.getAttribute("cod");
+  let pfijo = e.target.getAttribute("pfijo");
+  $("#id_c").val(codigobarra);
+  $("#pfijo").val(pfijo);
+  $("#modal_modificar").modal("show");
+}
