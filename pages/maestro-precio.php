@@ -105,42 +105,31 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
                 </div>
 
 
-                <h3 class="titulo">Ofertas / Descuento</h3>
-                <table class="styled-table table table-hover Table tabla">
+                <h3 class="titulo">Ofertas Pesables</h3>
+                <table class="styled-table table table-hover Table tabla" id="tabla-productos-pesables">
                     <tr>
                         <thead>
                             <tr>
-                                <th>Precio oferta</th>
-                                <th>Cantidad</th>
-                                <th>Fecha inicio</th>
-                                <th>Fecha término</th>
-                                <th>Tiempo restante</th>
-                                <th>Modificar</th>
+                                <th><strong>Precio oferta</strong></th>
+                                <th><strong>Cantidad</strong></th>
+                                <th><strong>Fecha inicio</strong></th>
+                                <th><strong>Fecha término</strong></th>
+                                <th><strong>Tiempo restante</strong></th>
+                                <th><strong>Modificar</strong></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php
-                            $precioOferta = $maestroProductoController->getOfertaUnitaria(00,5609404432964);
-                            for ($i = 0; $i < count($precioOferta); $i++) {
-                                echo "<tr>";
-                                echo "<td>" . $precioOferta[$i]->getOfertap()  . "</td>";
-                                echo "<td>" . $precioOferta[$i]->getCantidad() . "</td>";
-                                echo "<td>" . $precioOferta[$i]->getDesde() . "</td>";
-                                echo "<td>" . $precioOferta[$i]->getHasta() . "</td>";
-                                echo "<td>" . $precioOferta[$i]->getDiasRestantes() . "</td>";
-                                echo "<td><a href='' class='modificar_precioOferta' codigo='" . $precioOferta[$i]->getCodigobarra() . "'  pOf='" . $precioOferta[$i]->getOfertap() . "' can='" . $precioOferta[$i]->getCantidad() . "'  des='" . $precioOferta[$i]->getDesde() . "' has='" . $precioOferta[$i]->getHasta() . " 'dres='" . $precioOferta[$i]->getDiasRestantes() . " '>Editar</a></td>";
-                                echo "</tr>";
-                            }
-                            ?>
+                        <tbody id="tbody_productos_pesables">
+
+
                         </tbody>
                 </table>
 
                 <!-- Modal -->
-                <div class="modal" id="modal_modificarOferta">
+                <div class="modal" id="modal_modificarOfertaPesable">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5 texto" id="staticBackdropLabel">Modificar Oferta</h1>
+                                <h1 class="modal-title fs-5 texto" id="staticBackdropLabel">Modificar Oferta Pesable</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -177,6 +166,82 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
                         </div>
                     </div>
                 </div>
+
+
+                <h3 class="titulo">Ofertas Unitarias</h3>
+                <table class="styled-table table table-hover Table tabla">
+                    <tr>
+                        <thead>
+                            <tr>
+                                <th>Precio oferta</th>
+                                <th>Cantidad</th>
+                                <th>Fecha inicio</th>
+                                <th>Fecha término</th>
+                                <th>Tiempo restante</th>
+                                <th>Modificar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $precioOferta = $maestroProductoController->getOfertaUnitaria(00, 5609404432964);
+                            for ($i = 0; $i < count($precioOferta); $i++) {
+                                echo "<tr>";
+                                echo "<td>" . $precioOferta[$i]->getOfertap()  . "</td>";
+                                echo "<td>" . $precioOferta[$i]->getCantidad() . "</td>";
+                                echo "<td>" . $precioOferta[$i]->getDesde() . "</td>";
+                                echo "<td>" . $precioOferta[$i]->getHasta() . "</td>";
+                                echo "<td>" . $precioOferta[$i]->getDiasRestantes() . "</td>";
+                                echo "<td><a href='' class='modificar_precioOferta' codigo='" . $precioOferta[$i]->getCodigobarra() . "'  pOf='" . $precioOferta[$i]->getOfertap() . "' can='" . $precioOferta[$i]->getCantidad() . "'  des='" . $precioOferta[$i]->getDesde() . "' has='" . $precioOferta[$i]->getHasta() . " 'dres='" . $precioOferta[$i]->getDiasRestantes() . " '>Editar</a></td>";
+                                echo "</tr>";
+                            }
+                            ?>
+                        </tbody>
+                </table>
+
+                <!-- Modal -->
+                <div class="modal" id="modal_modificarOfertaUnitaria">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5 texto" id="staticBackdropLabel">Modificar Oferta Unitaria</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="../routes/maestro-precio.routes.php" method="POST" class="row g-3 justify-content-center" enctype="multipart/form-data">
+                                    <div class="col-md-10">
+                                        <input type="hidden" name="txt_codigo" id="id_codigo" value="">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="inputName" class="form-label texto">Precio Oferta</label>
+                                        <input type="name" class="form-control" id="pOferta" name="txtPrecioOferta">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="inputName" class="form-label texto">Cantidad</label>
+                                        <input type="number" class="form-control" id="cantidad" name="txtCantidad">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="fecha" class="form-label texto">Desde</label>
+                                        <input type="name" class="form-control" id="desde" name="txtDesde">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label for="fecha" class="form-label texto">Hasta</label>
+                                        <input type="name" class="form-control" id="hasta" name="txtHasta">
+                                    </div>
+                                    <!-- <div class="col-md-10">
+                                        <label for="inputDuration" class="form-label texto">Duración (minutos)</label>
+                                        <input type="number" class="form-control" id="pduracion" name="txtduracion" step="1">
+                                    </div> -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="submit" name="btn_confirmOferta" class="btn btn-primary btnAgregar">Modificar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -186,9 +251,8 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
         include '../components/diccionario/diccionario_maestro-precio.php';
     }
     ?>
-    <script src="../assets/js/btn-buscar.js"></script>
-    <script src="../assets/js/buscarPrecio.js"></script>
     <script src="../assets/js/function_buscar_prd.js"></script>
+    <script src="../assets/js/function_buscar_prd_psb.js"></script>
     <script src="../assets/js/functions.js"></script>
     <script src="../assets/js/limpiar.js"></script>
     <script src="../assets/js/codigoAutomatico.js"></script>
