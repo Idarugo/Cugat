@@ -15,16 +15,7 @@ class MaestroProductosController
         $this->connectDB2 = $connectDB2;
     }
 
-    // public function listarMaestroProductos($localId, $codigo)
-    // {
-    //     $sql = "SELECT * FROM productos WHERE local_id = :local_id AND codigo = :codigo";
-    //     $st = $this->connectDB2->prepare($sql); // Preparar la consulta
-    //     $st->execute(['local_id' => $localId, 'codigo' => $codigo]);
-    //     $productos = $st->fetchAll(PDO::FETCH_ASSOC);
-    //     return $productos;
-    // }
-
-
+    /*-------------- CONSULTAR PRECIO FIJO --------------------------------------------------------------*/
 
     public function buscarPrecios($local, $codigobarra)
     {
@@ -41,6 +32,49 @@ class MaestroProductosController
         return $precioFijo;
     }
 
+    /*---------------CONSULTAR OFERTA UNITARIA-----------------------------------------------------------*/
+
+    public function buscarPrecioUnitario($local, $codigobarra)
+    {
+        $precioOferta = array();
+        $this->connectDB2->connect();
+        $sql = "SELECT a.codigobarra AS CODIGO, a.descripcion AS DESCRIPCION, b.cantidad AS CANTIDAD,
+        b.precio AS PRECIO_OFERTA, b.desde AS DESDE, b.hasta AS HASTA, 
+        CONCAT(
+            MOD(FLOOR(DATEDIFF(b.hasta, b.desde) / 30), 12), ' meses ',
+            DATEDIFF(b.hasta, DATE_ADD(b.desde, INTERVAL FLOOR(DATEDIFF(b.hasta, b.desde) / 30) MONTH)), ' días'
+        ) AS RESTANTE, b.local AS LOCAL
+        FROM cugat_gestion00.r_maestroproductos_fijo_00 AS a, cugat_gestion00.r_maestroproductos_3x_00 AS b
+        WHERE a.codigobarra = b.codigo AND a.codigobarra = '$codigobarra' AND LOCAL = '$local';";
+        $st = $this->connectDB2->query($sql);
+        while ($rs = mysqli_fetch_array($st)) {
+            $precioOferta[] = ["local" => $rs['LOCAL'], "codigo" => $rs['CODIGO'], "descripcion" => NULL, "cantidad" => NULL, $rs['PRECIO_OFERTA'], "desde" => $rs['DESDE'], "hasta" => $rs['HASTA'], $rs['RESTANTE']];
+        }
+        $this->connectDB2->disconnect();
+        return $precioOferta;
+    }
+
+    /*---------------CONSULTA OFERTA PESABLE -------------------------------------------------------------*/
+    public function buscarPrecioPesable($local, $codigobarra)
+    {
+        $precioOferta = array();
+        $this->connectDB2->connect();
+        $sql = "SELECT a.codigobarra AS CODIGO, a.descripcion AS DESCRIPCION, b.cantidad AS CANTIDAD,b.preciooferta AS PRECIO_OFERTA, b.fechainicio AS DESDE,b.fechatermino AS HASTA 
+        CONCAT(
+            MOD(FLOOR(DATEDIFF(b.hasta, b.desde) / 30), 12), ' meses ',
+            DATEDIFF(b.hasta, DATE_ADD(b.desde, INTERVAL FLOOR(DATEDIFF(b.hasta, b.desde) / 30) MONTH)), ' días'
+        ) AS RESTANTE, b.local AS LOCAL
+        cugat_gestion00.r_maestroproductos_fijo_00 AS a,cugat_gestion00.r_maestroproductos_ofertas_00 AS b
+        WHERE a.codigobarra = '$codigobarra' AND LOCAL = '$local';";
+        $st = $this->connectDB2->query($sql);
+        while ($rs = mysqli_fetch_array($st)) {
+            $precioOferta[] = new MaestroProductosFijo($rs['LOCAL'], $rs['CODIGO'], NULL, NULL, NULL, $rs['PRECIO_OFERTA'], NULL, $rs['CANTIDAD'], $rs['DESDE'], $rs['HASTA'], $rs['RESTANTE'], NULL);
+        }
+        $this->connectDB2->disconnect();
+        return $precioOferta;
+    }
+
+
     // public function buscarPrecios($local, $codigobarra)
     // {
     //     $precioFijo = array();
@@ -55,27 +89,6 @@ class MaestroProductosController
     //     $this->connectDB2->disconnect();
     //     return $precioFijo;
     // }
-
-
-    public function getOfertaUnitaria($local, $codigobarra)
-    {
-        $precioOferta = array();
-        $this->connectDB2->connect();
-        $sql = "SELECT a.codigobarra AS CODIGO, a.descripcion AS DESCRIPCION, b.cantidad AS CANTIDAD,
-        b.precio AS PRECIO_OFERTA, b.desde AS DESDE, b.hasta AS HASTA, 
-        CONCAT(
-            MOD(FLOOR(DATEDIFF(b.hasta, b.desde) / 30), 12), ' meses ',
-            DATEDIFF(b.hasta, DATE_ADD(b.desde, INTERVAL FLOOR(DATEDIFF(b.hasta, b.desde) / 30) MONTH)), ' días'
-        ) AS RESTANTE, b.local AS LOCAL
-        FROM cugat_gestion00.r_maestroproductos_fijo_00 AS a, cugat_gestion00.r_maestroproductos_3x_00 AS b
-        WHERE a.codigobarra = b.codigo AND a.codigobarra = '$codigobarra' AND LOCAL = '$local';";
-        $st = $this->connectDB2->query($sql);
-        while ($rs = mysqli_fetch_array($st)) {
-            $precioOferta[] = new MaestroProductosFijo($rs['LOCAL'], $rs['CODIGO'], NULL, NULL, NULL, $rs['PRECIO_OFERTA'], NULL, $rs['CANTIDAD'], $rs['DESDE'], $rs['HASTA'], $rs['RESTANTE'], NULL);
-        }
-        $this->connectDB2->disconnect();
-        return $precioOferta;
-    }
 
 
     public function updatePrecio($codigobarra, $preciopuntoventa)

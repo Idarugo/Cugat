@@ -112,8 +112,8 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
                             <tr>
                                 <th><strong>Precio oferta</strong></th>
                                 <th><strong>Cantidad</strong></th>
-                                <th><strong>Fecha inicio</strong></th>
-                                <th><strong>Fecha término</strong></th>
+                                <th><strong>Desde</strong></th>
+                                <th><strong>Hasta</strong></th>
                                 <th><strong>Tiempo restante</strong></th>
                                 <th><strong>Modificar</strong></th>
                             </tr>
@@ -175,26 +175,15 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
                             <tr>
                                 <th>Precio oferta</th>
                                 <th>Cantidad</th>
-                                <th>Fecha inicio</th>
-                                <th>Fecha término</th>
+                                <th>Desde</th>
+                                <th>Hasta</th>
                                 <th>Tiempo restante</th>
                                 <th>Modificar</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php
-                            $precioOferta = $maestroProductoController->getOfertaUnitaria(00, 5609404432964);
-                            for ($i = 0; $i < count($precioOferta); $i++) {
-                                echo "<tr>";
-                                echo "<td>" . $precioOferta[$i]->getOfertap()  . "</td>";
-                                echo "<td>" . $precioOferta[$i]->getCantidad() . "</td>";
-                                echo "<td>" . $precioOferta[$i]->getDesde() . "</td>";
-                                echo "<td>" . $precioOferta[$i]->getHasta() . "</td>";
-                                echo "<td>" . $precioOferta[$i]->getDiasRestantes() . "</td>";
-                                echo "<td><a href='' class='modificar_precioOferta' codigo='" . $precioOferta[$i]->getCodigobarra() . "'  pOf='" . $precioOferta[$i]->getOfertap() . "' can='" . $precioOferta[$i]->getCantidad() . "'  des='" . $precioOferta[$i]->getDesde() . "' has='" . $precioOferta[$i]->getHasta() . " 'dres='" . $precioOferta[$i]->getDiasRestantes() . " '>Editar</a></td>";
-                                echo "</tr>";
-                            }
-                            ?>
+                        <tbody id="tbody_productos_unitarias">
+
+
                         </tbody>
                 </table>
 
