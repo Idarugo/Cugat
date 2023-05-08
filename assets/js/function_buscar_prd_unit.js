@@ -17,7 +17,7 @@ btn.addEventListener("click", function () {
     tbody.removeChild(tbody.firstChild);
   }
   fetch(
-    "http://localhost/cugat/Api/Api_busqueda_prd_local.php?local=" +
+    "http://localhost/cugat/Api/Api_busqueda_prd_unit_local.php?local=" +
       cod_local +
       "&codigo=" +
       cod
@@ -27,7 +27,7 @@ btn.addEventListener("click", function () {
       if (data.length == 0) {
         const tr = document.createElement("tr");
         const td = document.createElement("td");
-        td.textContent = "No Hay Productos Pesables con el Codigo";
+        td.textContent = "No Hay Productos Unitario con el Codigo";
         td.colSpan = "5";
         tr.append(td);
         tbody.append(tr);
@@ -47,7 +47,7 @@ btn.addEventListener("click", function () {
         editar.setAttribute("pcost", data[0].precio_costo);
         editar.href = "#";
         editar.textContent = "Editar";
-        editar.className = "modificar_precio";
+        editar.className = "modificar_precio_unitario";
         editar.addEventListener("click", modalShow)
         td_cod.textContent = data[0].codigo;
         td_des.textContent = data[0].descripcion;
@@ -67,5 +67,5 @@ let modalShow = (e) =>{
   let pfijo = e.target.getAttribute("pfijo");
   $("#id_c").val(codigobarra);
   $("#pfijo").val(pfijo);
-  $("#modal_modificarOfertaPesable").modal("show");
+  $("#modal_modificarOfertaUnitario").modal("show");
 }

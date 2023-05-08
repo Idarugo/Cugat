@@ -17,7 +17,7 @@ btn.addEventListener("click", function () {
     tbody.removeChild(tbody.firstChild);
   }
   fetch(
-    "http://localhost/cugat/Api/Api_busqueda_prd_local.php?local=" +
+    "http://localhost/cugat/Api/Api_busqueda_prd_psb_local.php?local=" +
       cod_local +
       "&codigo=" +
       cod
