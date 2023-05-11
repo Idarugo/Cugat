@@ -13,7 +13,7 @@
 </head>
 
 <body class="fondo-login">
-    <div class="container">
+    <div class="container container1">
         <div class="row">
             <div class="col-md-6 mx-auto py-4 form-login">
                 <h1 class="text-center titulo">Inicio de Sesion</h1>

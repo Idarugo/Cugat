@@ -1,6 +1,6 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
 @import url("./components/header.css");
-@import url("../components/footer.css");
+@import url("./components/footer.css");
 
 /*
 body {
@@ -85,7 +85,7 @@ body {
   height: 100%;
 }
 
-.container {
+.container1 {
   position: relative;
 
   position: absolute;
