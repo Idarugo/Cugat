@@ -1,66 +1,130 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
 @import url("./components/header.css");
-@import url("./components/footer.css");
+@import url("../components/footer.css");
 
+/*
 body {
-    background-image: url('./assets/images/background.jpg');
-    background-position: center;
-    background-size: cover;
-    color: white;
-    font-family: 'Roboto', sans-serif;
-}
+  background-image: url("./assets/images/background.jpg");
+  background-position: center;
+  background-size: cover;
+  color: white;
+  font-family: "Roboto", sans-serif;
+}*/
 
 .mi-contenedor {
-    animation: aparecer 1s ease;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    margin: 0 auto;
-    max-width: 960px;
-    padding: 20px;
+  animation: aparecer 1s ease;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 20px;
 }
 
 .titulo {
-    color: #0B2341;
-    font-size: 36px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
+  color: #0b2341;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .descripcion {
-    color: #333333;
-    font-size: 18px;
-    line-height: 1.5;
-    margin-bottom: 20px;
+  color: #333333;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 20px;
 }
 
 .boton {
-    background-color: #0B2341;
-    border-radius: 5px;
-    color: white;
-    display: inline-block;
-    font-weight: bold;
-    margin: 0 10px;
-    padding: 10px 20px;
-    text-decoration: none;
-    transition: all 0.3s ease;
+  background-color: #0b2341;
+  border-radius: 5px;
+  color: white;
+  display: inline-block;
+  font-weight: bold;
+  margin: 0 10px;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .boton:hover {
-    background-color: #FFD700;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-    color: #0B2341;
+  background-color: #ffd700;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  color: #0b2341;
 }
 
 @keyframes aparecer {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0px);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+/* index login */
+
+.fondo-login {
+  background-image: url("../img/fondo-cugat.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.fondo-login::before {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  position: relative;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.89;
+}
+
+.form-login {
+  background-color: bisque;
+  border: 1px black solid;
+  border-radius: 20px;
+}
+
+.titulo {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.form-floating input {
+  padding-left: 30px; /* Ajusta el espacio para el icono */
+  background-image: none; /* Elimina la imagen de fondo predeterminada */
+}
+
+.form-floating i {
+  position: absolute;
+  left: 10px;
+  top: 9px;
+  color: hsl(0, 0%, 20%);
+}
+
+.form-floating i.fa-user {
+  font-size: 16px;
+}
+
+.form-floating i.fa-lock {
+  font-size: 18px;
+}
+
+.form-floating label {
+  margin-left: 30px; /* Ajusta el espacio para el icono */
 }
