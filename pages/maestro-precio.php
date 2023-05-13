@@ -234,14 +234,13 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
             </div>
         </div>
     </div>
-    <?php include '../components/footer.php' ?>
+    
     <?php
     if (isset($_SESSION['Msj'])) {
         include '../components/diccionario/diccionario_maestro-precio.php';
     }
     ?>
     <script src="../assets/js/function_buscar_prd.js"></script>
-    <script src="../assets/js/function_buscar_prd_psb.js"></script>
     <script src="../assets/js/functions.js"></script>
     <script src="../assets/js/limpiar.js"></script>
     <script src="../assets/js/codigoAutomatico.js"></script>

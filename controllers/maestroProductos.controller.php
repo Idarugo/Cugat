@@ -59,16 +59,18 @@ class MaestroProductosController
     {
         $precioOferta = array();
         $this->connectDB2->connect();
-        $sql = "SELECT a.codigobarra AS CODIGO, a.descripcion AS DESCRIPCION, b.cantidad AS CANTIDAD,b.preciooferta AS PRECIO_OFERTA, b.fechainicio AS DESDE,b.fechatermino AS HASTA 
-        CONCAT(
-            MOD(FLOOR(DATEDIFF(b.hasta, b.desde) / 30), 12), ' meses ',
-            DATEDIFF(b.hasta, DATE_ADD(b.desde, INTERVAL FLOOR(DATEDIFF(b.hasta, b.desde) / 30) MONTH)), ' días'
-        ) AS RESTANTE, b.local AS LOCAL
-        cugat_gestion00.r_maestroproductos_fijo_00 AS a,cugat_gestion00.r_maestroproductos_ofertas_00 AS b
-        WHERE a.codigobarra = '$codigobarra' AND LOCAL = '$local';";
+        $sql = "SELECT a.codigobarra AS CODIGO, a.descripcion AS DESCRIPCION, b.cantidad AS CANTIDAD,b.preciooferta AS PRECIO_OFERTA, b.fechainicio AS DESDE,b.fechatermino AS HASTA,b.local AS LOCAL 
+        FROM cugat_gestion00.r_maestroproductos_fijo_00 AS a,cugat_gestion00.r_maestroproductos_ofertas_00 AS b
+        WHERE a.codigobarra=b.codigo AND a.codigobarra='$codigobarra' AND b.local = '$local' and b.`fechatermino` > now();";
         $st = $this->connectDB2->query($sql);
         while ($rs = mysqli_fetch_array($st)) {
-            $precioOferta[] = new MaestroProductosFijo($rs['LOCAL'], $rs['CODIGO'], NULL, NULL, NULL, $rs['PRECIO_OFERTA'], NULL, $rs['CANTIDAD'], $rs['DESDE'], $rs['HASTA'], $rs['RESTANTE'], NULL);
+            $fecha1 = new DateTime(date("Y-m-d"));
+            $fecha2 = new DateTime($rs["HASTA"]);
+            $diferencia = $fecha1->diff($fecha2);
+            $dias = $diferencia->days;
+            $dias = $dias . " dias";
+
+            $precioOferta[] = ["cantidad" => $rs["CANTIDAD"], "p_oferta" => $rs["PRECIO_OFERTA"], "desde" => $rs["DESDE"], "hasta" => $rs["HASTA"], "dias_restantes" => $dias];
         }
         $this->connectDB2->disconnect();
         return $precioOferta;
