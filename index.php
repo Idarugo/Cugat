@@ -22,7 +22,6 @@
         <p class="descripcion">También puedes visitar la sección de "Servicios" para conocer los diferentes planes de soporte que ofrecemos, y así asegurarte de tener la asistencia técnica que necesitas en todo momento.</p>
         <p class="descripcion">¡Gracias por visitarnos!</p>
     </div>
-    </div>
     <?php include './components/footer.php' ?>
 </body>
 

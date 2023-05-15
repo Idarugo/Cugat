@@ -1,4 +1,12 @@
 <?php
+session_start();
+if (isset($_SESSION['usua'])) {
+    $usuario = $_SESSION['usua'];
+} else {
+    header("Location: /../Cugat/index.php");
+}
+
+
 require '../core/bootstraper.php';
 require_once '../controllers/locales.controller.php';
 require_once '../controllers/maestroProductos.controller.php';
