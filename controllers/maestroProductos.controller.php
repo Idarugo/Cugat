@@ -101,12 +101,12 @@ class MaestroProductosController
         if ($this->connectDB2->getDB()->affected_rows) {
             $this->connectDB2->disconnect();
             $_SESSION['Msj'] = "1";
-            header("location: ../pages/maestro-precio.php");
+            header("location: ../pages/admin/sidebar/maestro-precio.php");
             exit();
         }
         $this->connectDB2->disconnect();
         $_SESSION['Msj'] = "-1";
-        header("location: ../pages/maestro-precio.php");
+        header("location: ../pages/admin/sidebar/maestro-precio.php");
         exit();
     }
 
@@ -120,12 +120,12 @@ class MaestroProductosController
         if ($this->connectDB2->getDB()->affected_rows) {
             $this->connectDB2->disconnect();
             $_SESSION['Msj'] = "MaestroPrecio_Modificar";
-            header("location: ../pages/maestro-precio.php");
+            header("location: ../pages/admin/sidebarmaestro-precio.php");
             exit();
         }
         $this->connectDB2->disconnect();
         $_SESSION['Msj'] = "MaestroPrecio_Error";
-        header("location: ../pages/maestro-precio.php");
+        header("location: ../pages/admin/sidebar/maestro-precio.php");
         exit();
     }
 }
