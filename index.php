@@ -12,29 +12,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
-<body class="fondo-login">
-    <div class="container container1">
-        <div class="row">
-            <div class="col-md-6 mx-auto py-4 form-login">
-                <h1 class="text-center titulo">Inicio de Sesion</h1>
-                <form>
-                    <div class="form-floating py-1">
-                        <i class="fas fa-user"></i>
-                        <input class="form-control" style="border-radius: 20px;" placeholder="Ingrese su usuario" type="text" name="txt_usuario" id="usuario">
-                        <label for="usuario">Ingrese su usuario</label>
-                    </div>
-
-                    <div class="form-floating py-1">
-                        <i class="fas fa-lock"></i>
-                        <input class="form-control" style="border-radius: 20px;" placeholder="Ingrese su clave" type="password" name="txt_clave" id="clave">
-                        <label for="clave">Ingrese su clave</label>
-                    </div>
-                    <button type="submit" class="btn btn-success col-md-12 my-1" style="border-radius: 20px; height: 50px;font-size: large;">Ingresar</button>
-                </form>
-            </div>
-        </div>
+<body>
+    <?php include './components/header.php' ?>
+    <div class="mi-contenedor mt-5 mb-5">
+        <h1 class="titulo">Bienvenido a la página de soporte informático de Cugat</h1>
+        <p class="descripcion">En esta página podrás modificar los precios de los productos de la empresa Cugat.</p>
+        <p class="descripcion">Para empezar, selecciona la opción de "Modificar precios" en el menú de navegación.</p>
+        <p class="descripcion">En esta página podrás encontrar información detallada sobre nuestros productos y servicios de soporte informático. Además, podrás contactar con nuestros expertos en caso de necesitar ayuda o asesoramiento técnico.</p>
+        <p class="descripcion">Para empezar, te recomendamos revisar la sección de "Productos" para conocer nuestras soluciones informáticas y elegir la que mejor se adapte a tus necesidades.</p>
+        <p class="descripcion">También puedes visitar la sección de "Servicios" para conocer los diferentes planes de soporte que ofrecemos, y así asegurarte de tener la asistencia técnica que necesitas en todo momento.</p>
+        <p class="descripcion">¡Gracias por visitarnos!</p>
     </div>
-    <<<<<<< HEAD <?php include './components/footer.php' ?>=======>>>>>>> fd153d9138eccbf4f2796499bdbee71f98b8b41c
+    </div>
+    <?php include './components/footer.php' ?>
 </body>
 
 </html>

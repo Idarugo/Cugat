@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 text-center">
-                <img src="../../Cugat/assets/img/logo.png" alt="Logo de la empresa" class="img-fluid logo">
+                <img src="/../Cugat/assets/img/logo.png" alt="Logo de la empresa" class="img-fluid logo">
             </div>
             <div class="col-md-8">
                 <div class="row">
