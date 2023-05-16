@@ -3,11 +3,12 @@ const codigo = document.getElementById("input-codigo");
 const local = document.getElementById("select-local");
 const tbody = document.getElementById("tbody_productos");
 const titulo = document.getElementById("titulo");
+const tbody_pesable = document.getElementById("tbody_productos_pesables");
 
-local.addEventListener("change", function(){
-    const option = local.options[local.selectedIndex];
-    titulo.textContent = option.text;
-})
+local.addEventListener("change", function () {
+  const option = local.options[local.selectedIndex];
+  titulo.textContent = option.text;
+});
 
 btn.addEventListener("click", function () {
   let cod = codigo.value;
@@ -48,7 +49,7 @@ btn.addEventListener("click", function () {
         editar.href = "#";
         editar.textContent = "Editar";
         editar.className = "modificar_precio";
-        editar.addEventListener("click", modalShow)
+        editar.addEventListener("click", modalShow);
         td_cod.textContent = data[0].codigo;
         td_des.textContent = data[0].descripcion;
         td_p_costo.textContent = data[0].precio_costo;
@@ -57,15 +58,62 @@ btn.addEventListener("click", function () {
         tr.append(td_cod, td_des, td_p_costo, td_p_fijo, td_editar);
         tbody.append(tr);
       }
+      buscarOfertaPesable(cod_local,cod);
     })
     .catch((error) => console.error(error));
 });
 
-
-let modalShow = (e) =>{
+let modalShow = (e) => {
   let codigobarra = e.target.getAttribute("cod");
   let pfijo = e.target.getAttribute("pfijo");
   $("#id_c").val(codigobarra);
   $("#pfijo").val(pfijo);
   $("#modal_modificar").modal("show");
-}
+};
+
+let buscarOfertaPesable = (cod_local, cod) => {
+  while (tbody_pesable.hasChildNodes()) {
+    tbody_pesable.removeChild(tbody_pesable.firstChild);
+  }
+  fetch(
+    "http://localhost/cugat/Api/Api_busqueda_prd_psb_local.php?local=" +
+      cod_local +
+      "&codigo=" +
+      cod
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.length == 0) {
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        td.textContent = "No Hay Ofertas Pesables con el Codigo";
+        td.colSpan = "6";
+        tr.append(td);
+        tbody_pesable.append(tr);
+      } else {
+        console.log(data);
+        const tr = document.createElement("tr");
+        const td_cantidad = document.createElement("td");
+        const td_p_oferta = document.createElement("td");
+        const td_desde = document.createElement("td");
+        const td_hasta = document.createElement("td");
+        const td_dias_restantes = document.createElement("td");
+
+        td_p_oferta.textContent = data[0].p_oferta;
+        td_cantidad.textContent = data[0].cantidad;
+        td_desde.textContent = data[0].desde;
+        td_hasta.textContent = data[0].hasta;
+        td_dias_restantes.textContent = data[0].dias_restantes;
+
+        tr.append(
+          td_p_oferta,
+          td_cantidad,
+          td_desde,
+          td_hasta,
+          td_dias_restantes
+        );
+        tbody_pesable.append(tr);
+      }
+    })
+    .catch((error) => console.error(error));
+};
