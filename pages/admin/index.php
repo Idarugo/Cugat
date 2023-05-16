@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/styles/main.css">
-    <link rel="stylesheet" href="../../assets/styles/pages/login.css">
+    <link rel="stylesheet" href="../../assets/styles/pages/admin/index.css">
     <title>Login</title>
 </head>
 
@@ -24,7 +24,7 @@
                 Usuario
             </label>
             <i class="input-icon uil uil-at"></i>
-            <input id="login-input-user" class="login__input" type="text" name="txtUsuario" />
+            <input type="text" name="txtUsuario" id="login-input-user" class="login__input" />
             <label for="login-input-password" class="login__label">
                 Contraseña
             </label>

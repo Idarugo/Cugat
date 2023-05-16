@@ -1,23 +1,41 @@
 <?php
 class Usuario
 {
-    private  $id;
+    private  $rut;
+    private  $nombre;
+    private  $labor;
+    private  $correo;
     private  $usuario;
     private  $password;
     private  $estado;
 
 
-    function __construct($id, $usuario, $password, $estado)
+    function __construct($rut, $nombre, $labor, $correo, $usuario, $password, $estado)
     {
-        $this->id = $id;
+        $this->rut = $rut;
+        $this->nombre = $nombre;
+        $this->labor = $labor;
+        $this->correo = $correo;
         $this->usuario = $usuario;
         $this->password = $password;
         $this->estado = $estado;
     }
 
-    public function getId(): int
+    public function getRut(): string
     {
-        return $this->id;
+        return $this->rut;
+    }
+    public function getNombre(): string
+    {
+        return $this->nombre;
+    }
+    public function getLabor(): string
+    {
+        return $this->labor;
+    }
+    public function getCorreo(): string
+    {
+        return $this->correo;
     }
     public function getUsuario(): string
     {

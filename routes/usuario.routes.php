@@ -1,5 +1,5 @@
 <?php
-require '../core/bootstraper.php';
+require_once '../core/bootstraper.php';
 require_once '../controllers/usuario.controller.php';
 $usuario = new UsuarioController($connectDB1);
 session_start();

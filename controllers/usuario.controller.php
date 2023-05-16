@@ -18,36 +18,35 @@ class UsuarioController
 
         // Validar si el RUT está vacío
         if (empty($usuario)) {
-            header("location: ../pages/login.php?AuthError=Rut esta Vacio");
+            header("location: ../pages/admin/index.php?AuthError=Usuario esta Vacio");
             exit();
         }
 
         // Validar si la contraseña está vacía
         if (empty($password)) {
-            header("location: ../pages/login.php?AuthError=Contraseña esta vacio");
+            header("location: ../pages/admin/index.php?AuthError=Contraseña esta vacio");
             exit();
         }
-
 
         $sql = "SELECT * FROM usuario WHERE usuario = '$usuario'";
         $resp = $this->connectDB1->query($sql);
         if ($rs = mysqli_fetch_array($resp)) {
             if (password_verify($password, $rs['pass'])) {
-                $usua = new Usuario($rs['id'], $rs['usuario'], $rs['pass'], $rs['estado']);
+                $usua = new Usuario($rs['rut'], $rs['nombre'], $rs['labor'], $rs['correo'], $rs['usuario'], $rs['pass'], $rs['estado']);
                 if ($rs['estado'] === 0) {
                     $this->connectDB1->disconnect();
-                    header("location:  ../pages/login.php?banned");
+                    header("location:  ../pages/admin/index.php?banned");
                     return;
                 }
                 session_start();
                 $_SESSION['usua'] = $usua;
                 $this->connectDB1->disconnect();
-                header("location:  /../Cugat/pages/principal.php");
+                header("location:  /../Cugat/pages/admin/principal.php");
                 return;
             }
         }
         $this->connectDB1->disconnect();
-        header("location: ../index.php?AuthError=Credenciales no válidas");
+        header("location: ../pages/admin/index.php?AuthError=Credenciales no válidas");
         return;
     }
 }
