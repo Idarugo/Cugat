@@ -1,41 +1,29 @@
 <?php
-session_start();
-if (isset($_SESSION['usua'])) {
-    $usuario = $_SESSION['usua'];
-} else {
-    header("Location: /../Cugat/index.php");
-}
-
-
-require '../core/bootstraper.php';
-require_once '../controllers/locales.controller.php';
-require_once '../controllers/maestroProductos.controller.php';
+require '../../../core/bootstraper.php';
+require_once '../../../controllers/locales.controller.php';
+require_once '../../../controllers/maestroProductos.controller.php';
 
 $locales = new LocalesController($connectDB1);
 $maestroProductoController = new MaestroProductosController($connectDB2);
 
-// $localId = $_POST['localId'];
-// $codigo = $_POST['codigo'];
-
-// $precios = $maestroProductoController->listarMaestroProductos($localId, $codigo);
 
 ?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <?php include '../components/head.php' ?>
+    <?php include '../../../components/head.php' ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/styles/main.css">
-    <link rel="stylesheet" href="../assets/styles/pages/maestro-precio.css">
+    <link rel="stylesheet" href="../../../assets/styles/main.css">
+    <link rel="stylesheet" href="../../../assets/styles/pages/maestro-precio.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Maestro Precio</title>
 </head>
 
 <body>
-    <?php include '../components/header.php' ?>
+    <?php include '../../../components/headerUsuario.php' ?>
     <div class="container container-main">
         <div class="text-center mt-5 buscar">
             <label for="select-local">Local:</label>
@@ -90,7 +78,7 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="../routes/maestro-precio.routes.php" method="POST" class="row g-3 justify-content-center" enctype="multipart/form-data">
+                                <form action="../../../routes/maestro-precio.routes.php" method="POST" class="row g-3 justify-content-center" enctype="multipart/form-data">
                                     <div class="col-md-10">
                                         <input type="hidden" name="txt_codigo" id="id_c" value="">
                                     </div>
@@ -141,7 +129,7 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="../routes/maestro-precio.routes.php" method="POST" class="row g-3 justify-content-center" enctype="multipart/form-data">
+                                <form action="../../../routes/maestro-precio.routes.php" method="POST" class="row g-3 justify-content-center" enctype="multipart/form-data">
                                     <div class="col-md-10">
                                         <input type="hidden" name="txt_codigo" id="id_codigo" value="">
                                     </div>
@@ -204,7 +192,7 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="../routes/maestro-precio.routes.php" method="POST" class="row g-3 justify-content-center" enctype="multipart/form-data">
+                                <form action="../../../routes/maestro-precio.routes.php" method="POST" class="row g-3 justify-content-center" enctype="multipart/form-data">
                                     <div class="col-md-10">
                                         <input type="hidden" name="txt_codigo" id="id_codigo" value="">
                                     </div>
@@ -242,17 +230,17 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
             </div>
         </div>
     </div>
-    <?php include '../components/footer.php' ?>
+    <?php include '../../../components/footer.php' ?>
     <?php
     if (isset($_SESSION['Msj'])) {
-        include '../components/diccionario/diccionario_maestro-precio.php';
+        include '../../../components/diccionario/diccionario_maestro-precio.php';
     }
     ?>
-    <script src="../assets/js/function_buscar_prd.js"></script>
-    <script src="../assets/js/function_buscar_prd_psb.js"></script>
-    <script src="../assets/js/functions.js"></script>
-    <script src="../assets/js/limpiar.js"></script>
-    <script src="../assets/js/codigoAutomatico.js"></script>
+    <script src="../../../assets/js/function_buscar_prd.js"></script>
+    <script src="../../../assets/js/function_buscar_prd_psb.js"></script>
+    <script src="../../../assets/js/functions.js"></script>
+    <script src="../../../assets/js/limpiar.js"></script>
+    <script src="../../../assets/js/codigoAutomatico.js"></script>
 </body>
 
 </html>

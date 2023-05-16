@@ -27,7 +27,7 @@ class Usuario
     {
         return $this->password;
     }
-    public function getEstado(): string
+    public function getEstado(): int
     {
         return $this->estado;
     }

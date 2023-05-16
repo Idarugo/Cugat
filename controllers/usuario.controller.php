@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '../../models/Usuario.php';
+require_once __DIR__ . '../../models/Usuario.php';
 
 
 class UsuarioController
@@ -11,34 +11,38 @@ class UsuarioController
         $this->connectDB1 = $connectDB1;
     }
 
+
     public function login($usuario, $password)
     {
         $this->connectDB1->connect();
 
-        /*Validar si el Usuario esta Vacio*/
+        // Validar si el RUT está vacío
         if (empty($usuario)) {
-            header("location: ../pages/login.php?AuthError=Usuario Esta Vacio");
+            header("location: ../pages/login.php?AuthError=Rut esta Vacio");
+            exit();
         }
 
-        /*Validar si la contraseña esta vacia*/
+        // Validar si la contraseña está vacía
         if (empty($password)) {
-            header("location: ../pages/login.php?AuthError=Contaseña Esta Vacio");
+            header("location: ../pages/login.php?AuthError=Contraseña esta vacio");
+            exit();
         }
+
 
         $sql = "SELECT * FROM usuario WHERE usuario = '$usuario'";
         $resp = $this->connectDB1->query($sql);
         if ($rs = mysqli_fetch_array($resp)) {
             if (password_verify($password, $rs['pass'])) {
                 $usua = new Usuario($rs['id'], $rs['usuario'], $rs['pass'], $rs['estado']);
-                if ($rs['estado'] === '0') {
+                if ($rs['estado'] === 0) {
                     $this->connectDB1->disconnect();
-                    header("location: ../pages/login.php?banned");
+                    header("location:  ../pages/login.php?banned");
                     return;
                 }
                 session_start();
                 $_SESSION['usua'] = $usua;
                 $this->connectDB1->disconnect();
-                header("location:  /../Cugat/pages/maestro-precio.php");
+                header("location:  /../Cugat/pages/principal.php");
                 return;
             }
         }

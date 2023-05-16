@@ -188,3 +188,9 @@ body {
 .login__forgot:hover {
 	color: rgb(17, 97, 237);
 }
+
+
+#error-message {
+	color: rgba(255, 255, 255, 0.75);
+  }
+  

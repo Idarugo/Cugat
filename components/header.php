@@ -7,7 +7,7 @@
     <nav>
         <ul>
             <li><a rel="noopener noreferrer" href="/../Cugat/index.php">Inicio</a></li>
-            <li><a rel="noopener noreferrer" href="/../Cugat/pages/login.php">Maestro Precio</a></li>
+            <li><a rel="noopener noreferrer" href="/../Cugat/pages/admin/index.php">Login</a></li>
         </ul>
     </nav>
 </header>
