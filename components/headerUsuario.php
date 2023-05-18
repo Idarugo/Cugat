@@ -1,15 +1,18 @@
 <header>
     <div class="logo">
-        <a href="/../Cugat/pages/admin/principal.php">
-            <img src="../../../../Cugat/assets/img/logo.png" alt="Logo de la empresa">
-        </a>
+        <div id="navbar-wrapper">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a href="#" class="navbar-brand" id="sidebar-toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
     </div>
     <nav>
         <ul>
-            <li><a rel="noopener noreferrer" href="/../Cugat/pages/admin/sidebar/maestro-precio.php">Maestro Producto</a></li>
-            <li><a rel="noopener noreferrer" href="/../Cugat/pages/admin/sidebar/historial.php">Historial</a></li>
-            <li><a rel="noopener noreferrer" href="/../Cugat/pages/login.php">Perfil</a></li>
-            <li><a rel="noopener noreferrer" href="/../Cugat/pages/cerrar_sesion.php">Cerrar Sesion</a></li>
+
         </ul>
     </nav>
 </header>

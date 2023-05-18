@@ -4,7 +4,8 @@ body {
 	font-size: 16px;
 	line-height: 1.25;
 	letter-spacing: 1px;
-    margin-bottom: 100px;
+	margin: 0;   /* NUEVO */
+
 }
 
 * {
@@ -23,7 +24,6 @@ body {
 	min-height: 680px;
 	background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/283591/login-background.jpg);
 	box-shadow: 0 50px 70px -20px rgba(0, 0, 0, 0.85);
-    padding-bottom: 50px;
 }
 
 .login-container:after {
@@ -188,5 +188,3 @@ body {
 .login__forgot:hover {
 	color: rgb(17, 97, 237);
 }
-
-

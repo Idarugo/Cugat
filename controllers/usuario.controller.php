@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '../../models/Usuario.php';
+require  __DIR__ . '../../models/Usuario.php';
 
 
 class UsuarioController
@@ -12,12 +12,12 @@ class UsuarioController
     }
 
 
-    public function login($usuario, $password)
+    public function login($user, $password)
     {
         $this->connectDB1->connect();
 
         // Validar si el RUT está vacío
-        if (empty($usuario)) {
+        if (empty($user)) {
             header("location: ../pages/admin/index.php?AuthError=Usuario esta Vacio");
             exit();
         }
@@ -28,11 +28,12 @@ class UsuarioController
             exit();
         }
 
-        $sql = "SELECT * FROM usuario WHERE usuario = '$usuario'";
+        $sql = "SELECT * FROM usuario WHERE usuario = '$user'";
         $resp = $this->connectDB1->query($sql);
         if ($rs = mysqli_fetch_array($resp)) {
+            echo " recorriendo RS ";
             if (password_verify($password, $rs['pass'])) {
-                $usua = new Usuario($rs['rut'], $rs['nombre'], $rs['labor'], $rs['correo'], $rs['usuario'], $rs['pass'], $rs['estado']);
+                $usua = new Usuario($rs['rut'], $rs['nombre'],  $rs['labor'],  $rs['correo'],  $rs['usuario'],  $rs['pass'],  $rs['estado']);
                 if ($rs['estado'] === 0) {
                     $this->connectDB1->disconnect();
                     header("location:  ../pages/admin/index.php?banned");
@@ -48,5 +49,20 @@ class UsuarioController
         $this->connectDB1->disconnect();
         header("location: ../pages/admin/index.php?AuthError=Credenciales no válidas");
         return;
+    }
+
+
+
+    public function listUsuario()
+    {
+        $user = array();
+        $this->connectDB1->connect();
+        $sql = " SELECT * FROM `usuario`";
+        $st = $this->connectDB1->query($sql);
+        while ($rs = mysqli_fetch_array($st)) {
+            $user[] = new Usuario($rs['rut'], $rs['nombre'],  $rs['labor'],  $rs['correo'],  $rs['usuario'],  $rs['pass'],  $rs['estado']);;
+        }
+        $this->connectDB1->disconnect();
+        return $user;
     }
 }

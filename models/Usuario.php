@@ -5,18 +5,18 @@ class Usuario
     private  $nombre;
     private  $labor;
     private  $correo;
-    private  $usuario;
+    private  $user;
     private  $password;
     private  $estado;
 
 
-    function __construct($rut, $nombre, $labor, $correo, $usuario, $password, $estado)
+    function __construct($rut, $nombre, $labor, $correo, $user, $password, $estado)
     {
         $this->rut = $rut;
         $this->nombre = $nombre;
         $this->labor = $labor;
         $this->correo = $correo;
-        $this->usuario = $usuario;
+        $this->user = $user;
         $this->password = $password;
         $this->estado = $estado;
     }
@@ -39,7 +39,7 @@ class Usuario
     }
     public function getUsuario(): string
     {
-        return $this->usuario;
+        return $this->user;
     }
     public function getPassword(): string
     {

@@ -23,15 +23,12 @@
             <label for="login-input-user" class="login__label">
                 Usuario
             </label>
-            <i class="input-icon uil uil-at"></i>
-            <input type="text" name="txtUsuario" id="login-input-user" class="login__input" />
+            <input type="text" name="txtUsuario" id="mayusculaInput" class="login__input" onkeyup="convertirAMayusculas()" />
             <label for="login-input-password" class="login__label">
                 Contraseña
             </label>
-            <i class="input-icon uil uil-at"></i>
-            <input id="logpass" class="login__input" type="password" name="txtPassword" autocomplete="off" />
+            <input id="mayusculaInput" class="login__input" type="password" name="txtPassword" onkeyup="convertirAMayusculas()" />
             <input type="submit" value="Iniciar Sesion" class="btn mt-4 login__submit" name="btnUsuarioLogin">
-
         </form>
         <?php if (isset($_GET['AuthError'])) : ?>
             <div id="error-message" class="error-message text-center errorMens" style="color: white;">
@@ -39,8 +36,9 @@
             </div>
         <?php endif; ?>
     </div>
-    <?php include '../../components/footer.php' ?>
     <script src="../../assets/js/login.js"></script>
+    <script src="../../assets/js/mayuscula.js"></script>
+    <?php include '../../components/footer.php' ?>
 </body>
 
 </html>

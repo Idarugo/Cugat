@@ -64,8 +64,10 @@ btn.addEventListener("click", function () {
 
 let modalShow = (e) =>{
   let codigobarra = e.target.getAttribute("cod");
+  let descripcion = e.target.getAttribute("des");
   let pfijo = e.target.getAttribute("pfijo");
   $("#id_c").val(codigobarra);
+  $("#des").val(descripcion);
   $("#pfijo").val(pfijo);
   $("#modal_modificarOfertaUnitario").modal("show");
 }
