@@ -1,3 +1,16 @@
+<?php
+#Header unico para Admin
+require_once __DIR__ . '../../models/Usuario.php';
+$login = false;
+$isAdmin = false;
+
+if (isset($_SESSION['usua'])) {
+    $login = true;
+    $usua = $_SESSION['usua'];
+} else {
+    header("location:  /../Cugat/index.php");
+}
+?>
 <header>
     <div class="logo">
         <div id="navbar-wrapper">

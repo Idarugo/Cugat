@@ -3,7 +3,7 @@ require_once '../../models/Usuario.php';
 session_start();
 if (isset($_SESSION['usua'])) {
     $usuario = $_SESSION['usua']->getAdmin();
-    if ($usuario != 1) {
+    if ($usuario != 0) {
         header("Location: /../Cugat/index.php");
     }
 } else {
@@ -35,8 +35,8 @@ if (isset($_SESSION['usua'])) {
 
         <section id="content-wrapper">
             <div class="row">
+                <h3 class="text-center">TRABAJADOR</h3>
 
-                <h3 class="text-center">ADMINISTRADOR</h3>
             </div>
         </section>
 

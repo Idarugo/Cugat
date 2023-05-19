@@ -1,3 +1,14 @@
+/* rol*/
+$(".modificar_rol").click(function (e) {
+  e.preventDefault();
+  let id = $(this).attr("id_rol");
+  let rol = $(this).attr("rol");
+  $("#id_r").val(id);
+  $("#rol").val(rol);
+  $("#modal_modificar").modal("show");
+});
+
+
 const btn = document.getElementById("btn-buscar");
 const btn_limpiar = document.getElementById("btn-limpiar");
 const codigo = document.getElementById("codigo_barra");
@@ -97,3 +108,6 @@ btn_limpiar.addEventListener("click", function () {
     tbody.removeChild(tbody.firstChild);
   }
 });
+
+
+

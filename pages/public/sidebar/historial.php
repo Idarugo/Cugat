@@ -2,15 +2,13 @@
 require_once '../../../models/Usuario.php';
 session_start();
 if (isset($_SESSION['usua'])) {
-    $admin = $_SESSION['usua']->getAdmin();
-    if ($admin != 1) {
-        header("Location: /../Cugat/index.php");
+    $usu = $_SESSION['usua']->getAdmin();
+    if ($usu != 0) {
+        header("Location: /../../Cugat/index.php");
     }
 } else {
-    header("Location: /../Cugat/index.php");
+    header("Location: /../../Cugat/index.php");
 }
-?>
-<?php
 require '../../../core/bootstraper.php';
 require_once '../../../controllers/locales.controller.php';
 require_once '../../../controllers/usuario.controller.php';

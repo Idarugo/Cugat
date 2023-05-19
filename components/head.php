@@ -1,7 +1,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link class="shortcut" rel="shortcut icon" href="../../Cugat/assets/img/logo.png">
-<!-- <title>Veterinaria</title> -->
+<!-- <title>Cugat</title> -->
 
 <!-- sweetalert2 -->
 <script src="../assets/lib/sweetalert2/sweetalert2.min.js"></script>

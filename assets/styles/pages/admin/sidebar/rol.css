@@ -1,0 +1,89 @@
+.styled-table {
+    border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    font-family:
+        sans-serif;
+    font-size: 1em;
+    margin: 25px 0;
+    min-width: 450px;
+}
+
+
+.styled-table thead tr {
+    background-color: #b05205;
+    color: #ffffff;
+    text-align: middle;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #b05205;
+}
+
+.table-container {
+    position: relative;
+}
+
+.tabla {
+    margin-top: 70px;
+}
+
+
+/* Modal Registrar*/
+
+.btn-registrar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.registrarProductos {
+    margin: 0px auto;
+    text-align: left;
+    vertical-align: top;
+    width: 100%;
+}
+
+.titulo {
+    Font-family: Cambria, Georgia, serif;
+    text-align: center;
+}
+
+.botonBlog {
+    background-color: #fd7e14;
+    border-color: #b05205;
+    color: #FFFFFF;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.botonBlog:hover {
+    background-color: coral;
+    border-color: rgb(222, 137, 27);
+    color: #FFFFFF;
+}
+
+.btnAgregar {
+    background-color: #fd7e14;
+    transition: background-color 0.3s ease-in-out; /* Agregar una transición suave al cambio de color */
+  }
+  
+  .btnAgregar:hover {
+    background-color: #b05205; /* Cambiar el color de fondo al pasar el mouse por encima */
+  }

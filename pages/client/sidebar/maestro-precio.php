@@ -3,7 +3,7 @@ require_once '../../../models/Usuario.php';
 session_start();
 if (isset($_SESSION['usua'])) {
     $usuario = $_SESSION['usua']->getAdmin();
-    if ($usuario != 1) {
+    if ($usuario != 0) {
         header("Location: /../../Cugat/index.php");
     }
 } else {

@@ -3,7 +3,7 @@ require_once '../../../models/Usuario.php';
 session_start();
 if (isset($_SESSION['usua'])) {
     $admin = $_SESSION['usua']->getAdmin();
-    if ($admin != 1) {
+    if ($admin != 0) {
         header("Location: /../Cugat/index.php");
     }
 } else {
@@ -17,7 +17,7 @@ require_once '../../../controllers/usuario.controller.php';
 require_once '../../../controllers/maestroProductos.controller.php';
 
 $locales = new LocalesController($connectDB1);
-$usuar = new UsuarioController($connectDB1);
+$usua = new UsuarioController($connectDB1);
 $maestroProductoController = new MaestroProductosController($connectDB2);
 ?>
 <!DOCTYPE html>
@@ -85,7 +85,7 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
                             <select id="select-usuario" class="form-select" name="select-usuario" required>
                                 <option value="">Selecciona una opción</option>
                                 <?php
-                                $listUsuarios = $usuar->listUsuario();
+                                $listUsuarios = $usua->listUsuario();
                                 foreach ($listUsuarios as $u) {
                                     $rut = $u->getRut();
                                     $nombre = $u->getNombre();
