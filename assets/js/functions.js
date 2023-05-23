@@ -1,3 +1,18 @@
+$(".modificar_usuario").click(function (e) {
+  e.preventDefault();
+  let rut = $(this).attr("rut_usu");
+  let nom = $(this).attr("nom_usu");
+  let cor = $(this).attr("cor_usu");
+  let lab = $(this).attr("lab_usu");
+  let rol = $(this).attr("rol_usu");
+  $("#rut_u").val(rut);
+  $("#nom_u").val(nom);
+  $("#cor_u").val(cor);
+  $("#lab_u").val(lab);
+  $("#rol_u").val(rol);
+  $("#modal_modificar").modal("show");
+});
+
 /* rol*/
 $(".modificar_rol").click(function (e) {
   e.preventDefault();
@@ -7,6 +22,9 @@ $(".modificar_rol").click(function (e) {
   $("#rol").val(rol);
   $("#modal_modificar").modal("show");
 });
+
+
+
 
 
 const btn = document.getElementById("btn-buscar");

@@ -20,10 +20,10 @@
         <a href="/Cugat/pages/admin/sidebar/historial.php"><i class="fa fa-history"></i>Historial</a>
     </li>
     <li>
-        <a href="/Cugat/pages/admin/sidebar/usuario.php"><i class="fa fa-user"></i>Usuario</a>
+        <a href="/Cugat/pages/admin/sidebar/rol.php"><i class="fa fa-users"></i>Rol</a>
     </li>
     <li>
-        <a href="/Cugat/pages/admin/sidebar/perfil.php"><i class="fa fa-user"></i>Perfil</a>
+        <a href="/Cugat/pages/admin/sidebar/usuario.php"><i class="fa fa-user"></i>Usuarios</a>
     </li>
     <li>
         <a href="/../Cugat/pages/cerrar_sesion.php"><i class="fa fa-sign-out-alt"></i>Cerrar Sesion</a>
@@ -51,12 +51,8 @@
             <a href="/Cugat/pages/admin/sidebar/rol.php"><i class="fa fa-users"></i>Rol</a>
         </li>
         <li>
-            <a href="/Cugat/pages/admin/sidebar/usuario.php"><i class="fa fa-user-circle"></i>Usuario</a>
+            <a href="/Cugat/pages/admin/sidebar/usuario.php"><i class="fa fa-user-circle"></i>Usuarios</a>
         </li>
-        <li>
-            <a href="/Cugat/pages/admin/sidebar/perfil.php"><i class="fa fa-id-card"></i>Perfil</a>
-        </li>
-    
         <li>
             <a href="/../Cugat/pages/cerrar_sesion.php"><i class="fa fa-sign-out-alt"></i>Cerrar Sesion</a>
         </li>
@@ -78,9 +74,6 @@
         </li>
         <li>
             <a href="/Cugat/pages/client/sidebar/historial.php"><i class="fa fa-history"></i>Historial</a>
-        </li>
-        <li>
-            <a href="/Cugat/pages/client/sidebar/perfil.php"><i class="fa fa-user"></i>Perfil</a>
         </li>
         <li>
             <a href="/../Cugat/pages/cerrar_sesion.php"><i class="fa fa-sign-out-alt"></i>Cerrar Sesion</a>

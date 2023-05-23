@@ -142,11 +142,11 @@ if ($contador != 0) { // validamos que el contador tenga al menos un dato
                                     <td><strong>Labor</strong></td>
                                     <td><strong>Rol</strong></td>
                                     <td><strong>Estado</strong></td>
-
+                                    <td><strong>Bloquear</strong></td>
                                 </tr>
                                 <?php if ($var == 0) : ?>
                                     <tr>
-                                        <td colspan="6">No Hay Datos Que Mostrar</td>
+                                        <td colspan="7">No Hay Datos Que Mostrar</td>
                                     </tr>
                                 <?php else : ?>
                                     <?php for ($i = $indice_inicio; $i <= $indice_fin; $i++) : ?>
@@ -156,11 +156,21 @@ if ($contador != 0) { // validamos que el contador tenga al menos un dato
                                             <td><?= $usuarios[$i]->getCorreo() ?></td>
                                             <td><?= $usuarios[$i]->getLabor() ?></td>
                                             <td><?= $usuarios[$i]->getRol() ?></td>
-                                            <td><?= $usuarios[$i]->getEstado() ?></td>
+                                            <?php
+                                            if ($usuarios[$i]->getEstado() == 0) {
+                                                echo "<td>Habilitado</td>";
+                                            } elseif ($usuarios[$i]->getEstado() == 1) {
+                                                echo "<td>Desabilitado</td>";
+                                            }
+                                            ?>
+                                            <td>
+                                                <a href="" class="modificar_usuario" rut_usu="<?= $usuarios[$i]->getRut ?>" nom="<?= $usuarios[$i]->getNombre() ?>" cor="<?= $usuarios[$i]->getCorreo() ?>" lab="<?= $usuarios[$i]->getLabor() ?>" rol="<?= $usuarios[$i]->getRol() ?>">Editar</a>
+                                                <a href="../../../routes/usuario.routes.php?BloquearUsuario=<?= $usuarios[$i]->getRut() ?>">Bloquear</a>
+                                            </td>
                                         </tr>
                                     <?php endfor; ?>
                                     <tr>
-                                        <td colspan="6">
+                                        <td colspan="7">
                                             <div class="pagination-container float-end">
                                                 <ul class="pagination d-flex">
                                                     <?php if ($pagina_actual > 1) : ?>
@@ -188,8 +198,66 @@ if ($contador != 0) { // validamos que el contador tenga al menos un dato
                                         </td>
                                     </tr>
                                 <?php endif; ?>
-
                             </table>
+                            <!-- Modal -->
+                            <div class="modal fade" id="modal_modificar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modificar Usuario</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="../../../routes/usuario.routes.php" method="POST" class="row g-3 justify-content-center" enctype="multipart/form-data">
+                                                <div class="col-md-5">
+                                                    <label for="inputName" class="form-label">Nombre</label>
+                                                    <input type="name" class="form-control" id="nom_u" name="txtNombre">
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <label for="inputName" class="form-label">Labor</label>
+                                                    <input type="name" class="form-control" id="lab_u" name="txtLabor">
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <label for="inputName" class="form-label">Correo</label>
+                                                    <input type="name" class="form-control" id="cor_u" name="txtCorreo">
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <label for="inputName" class="form-label">Usuario</label>
+                                                    <input type="name" class="form-control" id="inputName" name="txtUsuario">
+                                                </div>
+                                                <div class="col-10 mb-3">
+                                                    <label for="inputState" class="form-label">Seleccione Rol</label>
+                                                    <select id="rol_u" class="form-select" name="Rol">
+                                                        <option value="">Selecciona una opción</option>
+                                                        <?php
+                                                        $selectRol = $selectRol->ListRol();
+                                                        for ($i = 0; $i < count($selectRol); $i++) {
+                                                            $r = $selectRol[$i];
+                                                            $id = $r->getId();
+                                                            $rol = $r->getRol();
+                                                            echo "<option value='$id'>$rol</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <label for="inputName" class="form-label">Tipo Trabajador</label><br>
+                                                    <input type="radio" name="opcion_s" value="1" checked> Administrador
+                                                    <input type="radio" name="opcion_s" value="2"> Empleador
+                                                </div>
+                                                <div class="col-10 mb-3">
+                                                    <label for="inputName" class="form-label">Contraseña</label>
+                                                    <input type="password" name="txtPassword" class="form-select" id="logpass" autocomplete="off" required>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                    <button type="submit" name="btn_confirm" class="btn btn-primary btnAgregar">Modificar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

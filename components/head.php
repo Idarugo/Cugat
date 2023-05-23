@@ -4,9 +4,9 @@
 <!-- <title>Cugat</title> -->
 
 <!-- sweetalert2 -->
-<script src="../assets/lib/sweetalert2/sweetalert2.min.js"></script>
-<script src="../assets/lib/sweetalert2/sweetalert2.css"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 <!-- Boostrap -->
 <script src="../assets/lib/bootstrap/bootstrap.min.css"></script>

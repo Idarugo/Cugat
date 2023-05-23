@@ -1,6 +1,6 @@
 <?php
 require '../core/bootstraper.php';
-require '../controllers/usuario.controller.php';
+require_once '../controllers/usuario.controller.php';
 $usuario = new UsuarioController($connectDB1);
 session_start();
 
@@ -17,4 +17,10 @@ if (isset($_POST['btnRegistrarTrabajador'])) {
         return;
     }
     $usuario->registrarUsuario($_POST["txtRut"], $_POST["txtLabor"], $_POST["txtCorreo"], $_POST["txtUsuario"],  $_POST["Rol"], $target_fin, 2, $_POST["txtPassword"], 0);
+}
+
+if (isset($_GET["BloquearUsuario"])) {
+    $rut = $_GET["BloquearUsuario"];
+    $est = $usuario->conseguirEstado("estado", "usuario", "rut", $rut);
+    $usuario->cambiarEstado("usuario", "estado", $est, "rut", $rut);
 }

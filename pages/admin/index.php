@@ -39,6 +39,11 @@
     <script src="../../assets/js/login.js"></script>
     <script src="../../assets/js/mayuscula.js"></script>
     <?php include '../../components/footer.php' ?>
+    <?php
+    if (isset($_SESSION['Msj']) && $_SESSION['Msj'] == "Usuario_Bloqueado") {
+        include '../../components/diccionario/diccionario_usuario.php';
+    }
+    ?>
 </body>
 
 </html>
