@@ -14,7 +14,10 @@
         <a href="/Cugat/pages/admin/principal.php"><i class="fa fa-home"></i>Principal</a>
     </li>
     <li>
-        <a href="/Cugat/pages/admin/sidebar/maestro-precio.php""><i class=" fa fa-shopping-cart"></i>Maestro Producto</a>
+        <a href="/Cugat/pages/admin/sidebar/voucher.php"><i class="fa fa-receipt"></i>Generar Voucher</a>
+    </li>
+    <li>
+        <a href="/Cugat/pages/admin/sidebar/maestro-precio.php"><i class=" fa fa-shopping-cart"></i>Maestro Producto</a>
     </li>
     <li>
         <a href="/Cugat/pages/admin/sidebar/historial.php"><i class="fa fa-history"></i>Historial</a>
@@ -42,7 +45,10 @@
             <a href="/Cugat/pages/admin/principal.php"><i class="fa fa-home"></i>Principal</a>
         </li>
         <li>
-            <a href="/Cugat/pages/admin/sidebar/maestro-precio.php""><i class=" fa fa-shopping-cart"></i>Maestro Producto</a>
+            <a href="/Cugat/pages/admin/sidebar/voucher.php"><i class="fa fa-receipt"></i>Generar Voucher</a>
+        </li>
+        <li>
+            <a href="/Cugat/pages/admin/sidebar/maestro-precio.php"><i class="fa fa-shopping-cart"></i>Maestro Producto</a>
         </li>
         <li>
             <a href="/Cugat/pages/admin/sidebar/historial.php"><i class="fa fa-history"></i>Historial</a>
@@ -70,7 +76,10 @@
             <a href="/Cugat/pages/client/principal.php"><i class="fa fa-home"></i>Principal</a>
         </li>
         <li>
-            <a href="/Cugat/pages/client/sidebar/maestro-precio.php""><i class=" fa fa-shopping-cart"></i>Maestro Producto</a>
+            <a href="/Cugat/pages/client/sidebar/voucher.php"><i class="fa fa-receipt"></i>Generar Voucher</a>
+        </li>
+        <li>
+            <a href="/Cugat/pages/client/sidebar/maestro-precio.php"><i class=" fa fa-shopping-cart"></i>Maestro Producto</a>
         </li>
         <li>
             <a href="/Cugat/pages/client/sidebar/historial.php"><i class="fa fa-history"></i>Historial</a>

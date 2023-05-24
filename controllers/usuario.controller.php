@@ -154,4 +154,26 @@ class UsuarioController
         header("location: ../pages/admin/sidebar/usuario.php");
         exit();
     }
+
+
+
+
+    public function updateUsuario($rut, $nombre, $labor, $correo, $usuario, $password,  $rol, $admin, $estado)
+    {
+        session_start();
+        $this->connectDB1->connect();
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+        $sql = "UPDATE `usuario` SET `nom`='$nombre',`lab`='$labor',`cor`='$correo',`usu`='$usuario',`pass`='$hashed_password',`rol`=$rol,`admin`=$admin,`est`=$estado  WHERE `rut`='$rut'";
+        $this->connectDB1->query($sql);
+        if ($this->connectDB1->getDB()->affected_rows) {
+            $this->connectDB1->disconnect();
+            $_SESSION['Msj'] = "Usuario_Modificar";
+            header("location:  ../pages/admin/sidebar/usuario.php");
+            exit();
+        }
+        $this->connectDB1->disconnect();
+        $_SESSION['Msj'] = "Usuario_Error";
+        header("location:  ../pages/admin/sidebar/usuario.php");
+        exit();
+    }
 }

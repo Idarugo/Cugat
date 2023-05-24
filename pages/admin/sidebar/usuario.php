@@ -18,7 +18,7 @@ require '../../../controllers/rol.controller.php';
 require '../../../controllers/generador.controller.php';
 $generadorController = new GeneradorController($connectDB1);
 $usuarioController = new UsuarioController($connectDB1);
-$selectRol = new RolController($connectDB1);
+$RolUsuario = new RolController($connectDB1);
 $pagina_actual = isset($_GET['pagina']) ? $_GET['pagina'] : 1; // Si no existe la variable de url sera 1
 $pagina_actual = is_numeric($pagina_actual) ? $pagina_actual : 1; // Si la variable de url es texto pasa a 1
 $pagina_actual =  $pagina_actual > 0 ? $pagina_actual : 1; // si la variable de url es menor a 0 es 1
@@ -100,7 +100,7 @@ if ($contador != 0) { // validamos que el contador tenga al menos un dato
                                             <select id="cbo_especialidad" class="form-select" name="Rol">
                                                 <option value="0">Selecciona una opción</option>
                                                 <?php
-                                                $selectRol = $selectRol->ListRol();
+                                                $selectRol = $RolUsuario->ListRol();
                                                 for ($i = 0; $i < count($selectRol); $i++) {
                                                     $r = $selectRol[$i];
                                                     $id = $r->getId();
@@ -164,7 +164,7 @@ if ($contador != 0) { // validamos que el contador tenga al menos un dato
                                             }
                                             ?>
                                             <td>
-                                                <a href="" class="modificar_usuario" rut_usu="<?= $usuarios[$i]->getRut ?>" nom="<?= $usuarios[$i]->getNombre() ?>" cor="<?= $usuarios[$i]->getCorreo() ?>" lab="<?= $usuarios[$i]->getLabor() ?>" rol="<?= $usuarios[$i]->getRol() ?>">Editar</a>
+                                                <a href="" class="modificar_usuario" rut_usu="<?= $usuarios[$i]->getRut() ?>" nom_usu="<?= $usuarios[$i]->getNombre() ?>" cor_usu="<?= $usuarios[$i]->getCorreo() ?>" user_usu="<?= $usuarios[$i]->getUsuario() ?>" lab_usu="<?= $usuarios[$i]->getLabor() ?>" rol_usu="<?= $usuarios[$i]->getRol() ?>" pas_usu="<?= $usuarios[$i]->getPassword() ?>">Editar</a>
                                                 <a href="../../../routes/usuario.routes.php?BloquearUsuario=<?= $usuarios[$i]->getRut() ?>">Bloquear</a>
                                             </td>
                                         </tr>
@@ -200,7 +200,7 @@ if ($contador != 0) { // validamos que el contador tenga al menos un dato
                                 <?php endif; ?>
                             </table>
                             <!-- Modal -->
-                            <div class="modal fade" id="modal_modificar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal" id="modal_modificar">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -209,9 +209,14 @@ if ($contador != 0) { // validamos que el contador tenga al menos un dato
                                         </div>
                                         <div class="modal-body">
                                             <form action="../../../routes/usuario.routes.php" method="POST" class="row g-3 justify-content-center" enctype="multipart/form-data">
+                                                <div class="col-md-10">
+                                                    <label for="inputName" class="form-label">Rut</label>
+                                                    <input class="form-control" type="text" name="txtRut" id="rut_u" onkeypress="return isNumber(event)" oninput="checkRut(this)" pattern="^(\d{1,2}\.)?\d{3}\.\d{3}(-|\s)?[\dkK]$" disabled>
+                                                    <input type="hidden" name="txt_br" id="br">
+                                                </div>
                                                 <div class="col-md-5">
                                                     <label for="inputName" class="form-label">Nombre</label>
-                                                    <input type="name" class="form-control" id="nom_u" name="txtNombre">
+                                                    <input type="name" class="form-control" id="nom_usu" name="txtNombre">
                                                 </div>
                                                 <div class="col-md-5">
                                                     <label for="inputName" class="form-label">Labor</label>
@@ -223,14 +228,14 @@ if ($contador != 0) { // validamos que el contador tenga al menos un dato
                                                 </div>
                                                 <div class="col-md-10">
                                                     <label for="inputName" class="form-label">Usuario</label>
-                                                    <input type="name" class="form-control" id="inputName" name="txtUsuario">
+                                                    <input type="name" class="form-control" id="user_usu" name="txtUsuario">
                                                 </div>
                                                 <div class="col-10 mb-3">
                                                     <label for="inputState" class="form-label">Seleccione Rol</label>
-                                                    <select id="rol_u" class="form-select" name="Rol">
+                                                    <select id="rol_usu" class="form-select" name="Rol">
                                                         <option value="">Selecciona una opción</option>
                                                         <?php
-                                                        $selectRol = $selectRol->ListRol();
+                                                        $selectRol = $RolUsuario->ListRol();
                                                         for ($i = 0; $i < count($selectRol); $i++) {
                                                             $r = $selectRol[$i];
                                                             $id = $r->getId();
@@ -247,7 +252,7 @@ if ($contador != 0) { // validamos que el contador tenga al menos un dato
                                                 </div>
                                                 <div class="col-10 mb-3">
                                                     <label for="inputName" class="form-label">Contraseña</label>
-                                                    <input type="password" name="txtPassword" class="form-select" id="logpass" autocomplete="off" required>
+                                                    <input type="password" name="txtPassword" class="form-select" id="pas_usu">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -264,21 +269,13 @@ if ($contador != 0) { // validamos que el contador tenga al menos un dato
             </div>
         </section>
     </div>
-    <script src="../../../assets/js/functions.js"></script>
     <script src="../../../assets/js/sidebar.js"></script>
+    <script src="../../../assets/js/functions.js"></script>
     <script src="../../../assets/js/valida_rut.js"></script>
-    <script>
-        $('#staticBackdrop').on('hidden.bs.modal', function() {
-            $("#formAlert").validate().resetForm();
-            $("#formAlert").find('.has-error').removeClass("has-error");
-            $("#formAlert").find('.has-success').removeClass("has-success");
-            $('#formAlert').find('.form-control-feedback').remove()
-        })
-    </script>
     <?php include '../../../components/footer.php' ?>
     <?php
     if (isset($_SESSION['Msj'])) {
-        include '../../../components/diccionario/diccionario_trabajador.php';
+        include '../../../components/diccionario/diccionario_usuario.php';
     } ?>
 </body>
 

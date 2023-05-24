@@ -3,13 +3,17 @@ $(".modificar_usuario").click(function (e) {
   let rut = $(this).attr("rut_usu");
   let nom = $(this).attr("nom_usu");
   let cor = $(this).attr("cor_usu");
+  let user = $(this).attr("user_usu");
   let lab = $(this).attr("lab_usu");
   let rol = $(this).attr("rol_usu");
+  let pas = $(this).attr("pas_usu");
   $("#rut_u").val(rut);
-  $("#nom_u").val(nom);
+  $("#nom_usu").val(nom);
   $("#cor_u").val(cor);
+  $("#user_usu").val(user);
   $("#lab_u").val(lab);
-  $("#rol_u").val(rol);
+  $("#rol_usu").val(rol);
+  $("#pas_usu").val(pas);
   $("#modal_modificar").modal("show");
 });
 

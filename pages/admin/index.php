@@ -40,7 +40,7 @@
     <script src="../../assets/js/mayuscula.js"></script>
     <?php include '../../components/footer.php' ?>
     <?php
-    if (isset($_SESSION['Msj']) && $_SESSION['Msj'] == "Usuario_Bloqueado") {
+    if (isset($_SESSION['Msj']) == "Usuario_Bloqueado") {
         include '../../components/diccionario/diccionario_usuario.php';
     }
     ?>
