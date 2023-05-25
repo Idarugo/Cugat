@@ -43,12 +43,10 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
         </aside>
         <section id="content-wrapper">
             <div class="row">
-
                 <div class="container container-main">
                     <h1 class="text-center">Historial de Cambio de Precio</h1>
-
-                    <form class="form-inline">
-                        <div class="form-group">
+                    <form class="row g-3">
+                        <div class="col-md-3">
                             <label for="select-local">Local:</label>
                             <select id="select-local" class="form-select" name="select-local" required>
                                 <option value="">Selecciona una opción</option>
@@ -65,22 +63,22 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
                             </select>
                         </div>
 
-                        <div class="form-group">
+                        <div class="col-md-3">
                             <label for="input-codigo">Código:</label>
                             <input class="form-control form-control-sm filter-input" type="text" id="input-codigo" name="input-codigo" maxlength="13">
                         </div>
 
-                        <div class="form-group">
+                        <div class="col-md-3">
                             <label for="desde">Desde:</label>
                             <input type="date" id="desde" class="form-control form-control-sm filter-input">
                         </div>
 
-                        <div class="form-group">
+                        <div class="col-md-3">
                             <label for="hasta">Hasta:</label>
                             <input type="date" id="hasta" class="form-control form-control-sm filter-input">
                         </div>
 
-                        <div class="form-group">
+                        <div class="col-md-3">
                             <label for="usuario">Usuario:</label>
                             <select id="select-usuario" class="form-select" name="select-usuario" required>
                                 <option value="">Selecciona una opción</option>
@@ -95,11 +93,11 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
                             </select>
                         </div>
 
-                        <div class="form-group">
+                        <div class="col-md-3">
                             <button type="button" class="btn btn-primary form-control form-control-sm filter-input" onclick="filterTable()">Filtrar</button>
                         </div>
 
-                        <div class="form-group">
+                        <div class="col-md-3">
                             <button type="button" class="btn btn-secondary form-control form-control-sm filter-input" onclick="resetTable()">Resetear</button>
                         </div>
                     </form>
@@ -143,6 +141,7 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
     </div>
     <script src="../../../assets/js/sidebar.js"></script>
     <script src="../../../assets/js/codigoAutomatico.js"></script>
+    <script src="../../../assets/js/fechaActual.js"></script>
     <?php include '../../../components/footer.php'; ?>
 </body>
 

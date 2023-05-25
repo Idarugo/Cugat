@@ -128,11 +128,10 @@ class UsuarioController
     }
 
     /* Estado */
-
     public function conseguirEstado($campo1, $tabla, $campo2, $rut)
     {
         $this->connectDB1->connect();
-        $sql = "select $campo1 as estado from $tabla where $campo2='$rut'";
+        $sql = "SELECT $campo1 AS estado FROM $tabla WHERE $campo2='$rut'";
         $ejecutar = $this->connectDB1->query($sql);
         $val = mysqli_fetch_assoc($ejecutar);
         $this->connectDB1->disconnect();
@@ -143,14 +142,17 @@ class UsuarioController
     {
         if ($est == 0) {
             $est = 1;
-            $_SESSION['Msj'] = "Usuario_Bloquear";
+            $_SESSION['Msj'] = "Usuario_Bloqueado";
         } else {
             $est = 0;
             $_SESSION['Msj'] = "Usuario_Debloqueado";
         }
+
         $this->connectDB1->connect();
-        $sql = "update $tabla set $campo1='$est' where $campo2='$rut'";
+        $sql = "UPDATE $tabla SET $campo1='$est' WHERE $campo2='$rut'";
         $ejecutar = $this->connectDB1->query($sql);
+        $this->connectDB1->disconnect();
+
         header("location: ../pages/admin/sidebar/usuario.php");
         exit();
     }

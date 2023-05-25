@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -24,6 +25,11 @@
     </div>
     </div>
     <?php include './components/footer.php' ?>
+    <?php
+    if (isset($_SESSION['Msj'])) {
+        include 'components/diccionario/diccionario_usuario.php';
+    }
+    ?>
 </body>
 
 </html>

@@ -156,18 +156,26 @@ if ($contador != 0) { // validamos que el contador tenga al menos un dato
                                             <td><?= $usuarios[$i]->getCorreo() ?></td>
                                             <td><?= $usuarios[$i]->getLabor() ?></td>
                                             <td><?= $usuarios[$i]->getRol() ?></td>
-                                            <?php
-                                            if ($usuarios[$i]->getEstado() == 0) {
-                                                echo "<td>Habilitado</td>";
-                                            } elseif ($usuarios[$i]->getEstado() == 1) {
-                                                echo "<td>Desabilitado</td>";
-                                            }
-                                            ?>
+                                            <?php if ($usuarios[$i]->getEstado() == 0) : ?>
+                                                <td>Habilitado</td>
+                                            <?php elseif ($usuarios[$i]->getEstado() == 1) : ?>
+                                                <td>Deshabilitado</td>
+                                            <?php endif; ?>
                                             <td>
                                                 <a href="" class="modificar_usuario" rut_usu="<?= $usuarios[$i]->getRut() ?>" nom_usu="<?= $usuarios[$i]->getNombre() ?>" cor_usu="<?= $usuarios[$i]->getCorreo() ?>" user_usu="<?= $usuarios[$i]->getUsuario() ?>" lab_usu="<?= $usuarios[$i]->getLabor() ?>" rol_usu="<?= $usuarios[$i]->getRol() ?>" pas_usu="<?= $usuarios[$i]->getPassword() ?>">Editar</a>
-                                                <a href="../../../routes/usuario.routes.php?BloquearUsuario=<?= $usuarios[$i]->getRut() ?>">Bloquear</a>
+                                                <a href="../../../routes/usuario.routes.php?BloquearUsuario=<?= $usuarios[$i]->getRut() ?>">
+                                                    <?php
+                                                    $est = $usuario->getEstado("estado", "usuario", "rut", $usuarios[$i]->getRut());
+                                                    if ($est == 0) {
+                                                        echo "Bloquear";
+                                                    } else {
+                                                        echo "Desbloquear";
+                                                    }
+                                                    ?>
+                                                </a>
                                             </td>
                                         </tr>
+
                                     <?php endfor; ?>
                                     <tr>
                                         <td colspan="7">

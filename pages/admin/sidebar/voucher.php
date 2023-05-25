@@ -76,7 +76,6 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
                                 <!-- Agrega las opciones de tipo de transacción según tus necesidades -->
                             </select>
                         </div>
-
                         <div class="col-md-3">
                             <label for="desde" class="form-label texto">Desde:</label>
                             <input type="date" id="desde" class="form-control form-control-sm">
@@ -121,6 +120,7 @@ $maestroProductoController = new MaestroProductosController($connectDB2);
     </div>
     <script src="../../../assets/js/sidebar.js"></script>
     <script src="../../../assets/js/codigoAutomatico.js"></script>
+    <script src="../../../assets/js/fechaActual.js"></script>
     <?php include '../../../components/footer.php'; ?>
 </body>
 
